@@ -1,4 +1,5 @@
 import { Fragment, useContext } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { Outlet, Link } from 'react-router-dom';
 
 import CartIcon from '../../components/cart-icon/cart-icon.component';
