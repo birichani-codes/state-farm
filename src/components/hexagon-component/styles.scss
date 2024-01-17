@@ -1,14 +1,14 @@
 /* styles.css */
 .App {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: sans-serif;
   text-align: center;
   padding-top: 100px;
 }
 
 .hex {
   cursor: pointer;
-  width: 120px; /* Set the default hexagon size */
-  height: 120px; /* Set the default hexagon size */
+  width: 120px; /* Default size for larger screens */
+  height: 120px;
 }
 
 .hex.A div {
@@ -28,7 +28,7 @@
 }
 
 /* Responsive styles */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .App {
     padding-top: 50px; /* Adjust padding for smaller screens */
   }
@@ -39,7 +39,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .hex {
     width: 60px; /* Further adjust the hexagon size for even smaller screens */
     height: 60px;
