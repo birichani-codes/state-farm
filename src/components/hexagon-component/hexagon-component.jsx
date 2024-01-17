@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-const sin60 = 2 / Math.sqrt(3);
+//const sin60 = 2 / Math.sqrt(3);
 const r = 120; // Increase the size of the hexagon
 
 const Hex = (props) => {
