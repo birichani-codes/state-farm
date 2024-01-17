@@ -1,0 +1,27 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+   
+    padding-top: 100px; /* Add margin-right property */
+  }
+  
+  .hex {
+    cursor: pointer;
+  }
+  
+  .hex.A div {
+    background: #ede;
+  }
+  
+  .hex.B div {
+    background: #dee;
+  }
+  
+  .hex:hover div {
+    border-color: #bb9 !important;
+  }
+  
+  .hex:active div {
+    border-color: #faf !important;
+  }
+  
