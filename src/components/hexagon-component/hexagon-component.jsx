@@ -1,78 +1,13 @@
+// HexagonComponent.jsx
 import React from "react";
-import "./styles.scss";
+import { HexagonContainer, Hexagon } from "../hexagon-component/Hexagon.styles";
 
-//const sin60 = 2 / Math.sqrt(3);
-const r = 120; // Increase the size of the hexagon
+const r = 120;
 
-const Hex = (props) => {
-  const { side = "", ...divProps } = props;
-
-  return (
-    <div
-      {...divProps}
-      className={`hex ${side}`}
-      style={{
-        boxSizing: "border-box",
-        height: `${r}px`, // Adjust the height based on the increased size
-        width: `${r}px`, // Adjust the width based on the increased size
-        ...props.style,
-        position: "relative",
-        borderRadius: "100%"
-      }}
-    >
-      <div
-        style={{
-          borderTop: "1px solid #000",
-          borderBottom: "1px solid #000",
-          boxSizing: "border-box",
-          width: `${r / Math.sqrt(3)}px`, // Adjust the width based on the increased size
-          height: "100%",
-          margin: "0 auto",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          transform: "rotate(90deg)"
-        }}
-      />
-      <div
-        style={{
-          borderTop: "1px solid #000",
-          borderBottom: "1px solid #000",
-          boxSizing: "border-box",
-          width: `${r / Math.sqrt(3)}px`, // Adjust the width based on the increased size
-          height: "100%",
-          margin: "0 auto",
-          transform: "rotate(150deg)",
-          transformOrigin: "center center",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0
-        }}
-      />
-      <div
-        style={{
-          borderTop: "1px solid #000",
-          borderBottom: "1px solid #000",
-          boxSizing: "border-box",
-          width: `${r / Math.sqrt(3)}px`, // Adjust the width based on the increased size
-          height: "100%",
-          margin: "0 auto",
-          transform: "rotate(210deg)",
-          transformOrigin: "center center",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0
-        }}
-      />
-    </div>
-  );
-};
 
 function createBoard() {
-  const rosLengthList = [3, 4, 5, 4,3];
+  console.log("Creating board...");
+  const rosLengthList = [3, 4, 5, 4, 3];
 
   return rosLengthList.map((length) => new Array(length).fill(0));
 }
@@ -98,40 +33,40 @@ function reducer(state, action) {
           action.payload.cellIndex,
           state.currentSide
         ),
-        currentSide: changeSide(state.currentSide)
+        currentSide: changeSide(state.currentSide),
       };
     default:
       return state;
   }
 }
 
-const App = () => {
+const HexagonComponent = () => {
   const [state, dispatch] = React.useReducer(reducer, {
     board: createBoard(),
-    currentSide: "A"
+    currentSide: "A",
   });
 
+  console.log("Rendering HexagonComponent");
+
   return (
-    <div className="App" style={{ marginTop: "35px" }}>
-      {/* Margin from navigation */}
+    <HexagonContainer className="App" style={{ marginTop: "35px" }}>
       <div style={{ marginLeft: "20px", marginRight: "20px" }}>
         {state.board.map((row, rowIndex) => (
           <div
             style={{
-              marginTop: "-14px",
               display: "flex",
-              justifyContent: "center"
+              justifyContent: "center",
             }}
             key={rowIndex}
           >
             {row.map((side, cellIndex) => (
-              <Hex
+              <Hexagon
                 side={side}
-                style={{ height: `${r}px`, width: `${r}px` }}
+                style={{ height: `${r}px`, width: `${r}px`, margin: "5px" }}
                 onClick={() =>
                   dispatch({
                     type: "put",
-                    payload: { rowIndex, cellIndex }
+                    payload: { rowIndex, cellIndex },
                   })
                 }
                 key={cellIndex}
@@ -140,8 +75,8 @@ const App = () => {
           </div>
         ))}
       </div>
-    </div>
+    </HexagonContainer>
   );
 };
 
-export default App;
+export default HexagonComponent;

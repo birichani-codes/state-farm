@@ -12,16 +12,30 @@ import './index.scss';
 const rootElement = document.getElementById('root');
 
 render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
+  <>
+    {process.env.NODE_ENV === 'development' ? (
+      <React.StrictMode>
+        <BrowserRouter>
+          <UserProvider>
+            <CategoriesProvider>
+              <CartProvider>
+                <App />
+              </CartProvider>
+            </CategoriesProvider>
+          </UserProvider>
+        </BrowserRouter>
+      </React.StrictMode>
+    ) : (
+      <BrowserRouter>
+        <UserProvider>
+          <CategoriesProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </CategoriesProvider>
+        </UserProvider>
+      </BrowserRouter>
+    )}
+  </>,
   rootElement
 );
